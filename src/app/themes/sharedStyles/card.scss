@@ -1,0 +1,25 @@
+.card-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+    .card-body{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 15rem;
+      height: 20rem;
+      border: #c16a9f solid 3px;
+      background-color: #c16a9f;
+      border-radius: 10px;
+      img{
+        width: 200px;
+        height: 200px;
+
+
+      }
+      h5, p{
+        color: white;
+      }
+    }
+  }
+
+

@@ -1,0 +1,9 @@
+<div class="card-container">
+    <div class="card-body" *ngFor="let song of Songs; let i = index">
+      <img src="{{song.img}}">
+      <h5 class="card-title">{{song.title}}</h5>
+      <h5 class="card-title">{{song.artist}}</h5>
+      <p class="card-text">{{song.duration}}</p>
+    </div>
+</div>
+

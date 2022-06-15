@@ -1,0 +1,19 @@
+.navbarLista{
+  display: grid;
+  grid-template-columns: 10% 90%;
+  .logo{
+    height: 4rem;
+    width: 4rem;
+    .editLogo{
+      filter: invert(84%) sepia(27%) saturate(5750%) hue-rotate(285deg) brightness(81%) contrast(83%);
+    }
+  }
+ul{
+  display: flex;
+  justify-content: space-around;
+  }
+}
+
+.lista a{
+  color: white;
+}
