@@ -1,7 +1,9 @@
 .card-container{
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  display: flex;
+  justify-content: space-evenly;
     .card-body{
+      background-position: center;
+      background-size: cover;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -10,16 +12,20 @@
       border: #c16a9f solid 3px;
       background-color: #c16a9f;
       border-radius: 10px;
+      opacity: 0.5;
       img{
         width: 200px;
         height: 200px;
-
-
       }
       h5, p{
         color: white;
+        font-size: 1.2rem;
       }
     }
+  .card-body:hover{
+    opacity: 1;
+    transition-duration: 0.5s;
+  }
   }
 
 

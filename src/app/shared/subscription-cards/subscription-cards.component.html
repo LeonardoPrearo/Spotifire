@@ -1,0 +1,7 @@
+<div  class="plan-container">
+  <div class="plan-body" *ngFor="let plan of subscriptionPlans; let i = index">
+    <h2>{{plan.subName}}</h2>
+    <h4>{{plan.price}}€ Ogni mese</h4>
+    <p>{{plan.accountNumber}} Account</p>
+  </div>
+</div>

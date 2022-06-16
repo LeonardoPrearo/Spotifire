@@ -1,0 +1,9 @@
+.page-container{
+  position: relative;
+  top: 4rem;
+  .form-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+

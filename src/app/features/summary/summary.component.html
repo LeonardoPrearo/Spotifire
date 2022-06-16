@@ -1,0 +1,33 @@
+<div class="summary-container">
+  <div *ngIf="user else template">
+    <div>
+      <h2>Riepilogo</h2>
+    </div>
+    <div>
+      <h3>{{user?.userName}}</h3>
+      <h3>{{user?.userSurname}}</h3>
+      <h2>{{user?.planType}} x {{user?.planDuration}}</h2>
+    </div>
+    <div>
+      <div class="card-info">
+        <h3>Numero carta</h3>
+        <h4>{{user.cardNumber | hideCardNumber}}</h4>
+        <div>
+          <h3>Scadenza</h3>
+          <h4>{{user?.cardExpiration}}</h4>
+          <h3>CVV</h3>
+          <h4>{{user?.cvv}}</h4>
+        </div>
+      </div>
+      <button (click)="editUser(user)">Modifica</button>
+      <button>Annulla</button>
+      <button>Conferma</button>
+    </div>
+  </div>
+  <ng-template #template>
+    <div class="no-info">
+      <img src="https://picsum.photos/200" class="img-template">
+      <p>Frase a caso</p>
+    </div>
+  </ng-template>
+</div>
