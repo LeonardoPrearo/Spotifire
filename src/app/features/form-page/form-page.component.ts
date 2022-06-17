@@ -1,4 +1,4 @@
-import {Component, OnInit, SimpleChanges} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {User} from "../../core/model/user";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 
@@ -12,8 +12,8 @@ export class FormPageComponent implements OnInit {
   user : User ;
 
   userForm = new FormGroup({
-    userName: new FormControl('', [Validators.required, Validators.minLength(1)]),
-    userSurname: new FormControl('', Validators.compose([Validators.required, Validators.minLength(1)])),
+    userName: new FormControl('', [Validators.required, Validators.minLength(1), Validators.pattern("[a-z-A-Z]")]),
+    userSurname: new FormControl('', Validators.compose([Validators.required, Validators.minLength(1), Validators.pattern("[a-z-A-Z]")])),
     email: new FormControl('', Validators.compose([Validators.required, Validators.email])),
     cardNumber: new FormControl('', Validators.compose([Validators.required, Validators.minLength(16), Validators.maxLength(16), Validators.pattern("^[0-9]*$")])),
     cardExpiration: new FormControl('', Validators.compose([Validators.required, Validators.pattern("^[0-9]*$")])),

@@ -4,6 +4,8 @@
   .form-container{
     display: grid;
     grid-template-columns: 1fr 1fr;
+    position: relative;
+    top: 5rem;
   }
 }
 
