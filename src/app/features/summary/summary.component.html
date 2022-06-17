@@ -6,6 +6,7 @@
       <div class="card-info">
         <h3>{{user?.userName}}</h3>
         <h3>{{user?.userSurname}}</h3>
+        <h3>{{user?.email}}</h3>
         <h2>{{user?.planType}} x {{user?.planDuration}}</h2>
         <h3>Numero carta</h3>
         <h4>{{user.cardNumber | hideCardNumber}}</h4>
@@ -19,7 +20,7 @@
     <div>
       <button (click)="editUser(user)">Modifica</button>
       <button>Annulla</button>
-      <button>Conferma</button>
+      <button routerLink="/home">Conferma</button>
     </div>
   </div>
   <ng-template #template>

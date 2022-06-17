@@ -21,6 +21,12 @@
               <div class="input_field"> <span><i aria-hidden="true" class="fa fa-user"></i></span>
                 <input type="text" name="userSurname" id="userSurname" placeholder="Cognome" formControlName="userSurname" required />
               </div>
+              <div *ngIf="userForm.controls['email'].invalid && userForm.controls['email'].touched" class="">
+                Campo obbligatorio
+              </div>
+              <div class="input_field"> <span><i aria-hidden="true" class="fa fa-mail-forward"></i></span>
+                <input type="text" name="email" id="email" placeholder="Email" formControlName="email" required />
+              </div>
               <div *ngIf="userForm.controls['cardNumber'].invalid && userForm.controls['cardNumber'].touched" class="">
                 Numero carta non valido
               </div>

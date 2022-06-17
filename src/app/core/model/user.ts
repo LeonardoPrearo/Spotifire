@@ -4,6 +4,7 @@ export interface User {
   id: number,
   userName: string,
   userSurname: string,
+  email:string,
   cardNumber: string,
   cardExpiration: string,
   cvv: number,

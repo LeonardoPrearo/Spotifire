@@ -14,6 +14,7 @@ export class FormPageComponent implements OnInit {
   userForm = new FormGroup({
     userName: new FormControl('', [Validators.required, Validators.minLength(1)]),
     userSurname: new FormControl('', Validators.compose([Validators.required, Validators.minLength(1)])),
+    email: new FormControl('', Validators.compose([Validators.required, Validators.email])),
     cardNumber: new FormControl('', Validators.compose([Validators.required, Validators.minLength(16), Validators.maxLength(16), Validators.pattern("^[0-9]*$")])),
     cardExpiration: new FormControl('', Validators.compose([Validators.required, Validators.pattern("^[0-9]*$")])),
     cvv: new FormControl('', Validators.compose([Validators.required , Validators.pattern("^[0-9]*$"), Validators.minLength(3), Validators.maxLength(3)])),
@@ -28,20 +29,13 @@ export class FormPageComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes['user'].currentValue) {
-
-    }
-  }
-
   manageUser(){
-    const newUser = this.userForm
+
     if(!this.user){
       this.addUser()
     }
     else{
       this.editUser(this.user)
-
     }
     this.userForm.reset()
   }
@@ -52,8 +46,7 @@ export class FormPageComponent implements OnInit {
 
 
   editUser($event: User) {
+    this.userForm?.patchValue($event);
     this.user = $event
-    this.userForm?.patchValue(this.user);
-    this.user = this.userForm.value
   }
 }
