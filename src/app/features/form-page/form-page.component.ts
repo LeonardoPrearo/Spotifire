@@ -35,7 +35,7 @@ export class FormPageComponent implements OnInit {
       this.addUser()
     }
     else{
-      this.editUser(this.user)
+      this.addUser()
     }
     this.userForm.reset()
   }
@@ -46,7 +46,12 @@ export class FormPageComponent implements OnInit {
 
 
   editUser($event: User) {
-    this.userForm?.patchValue($event);
+    this.userToEdit = $event
+    this.userForm.patchValue(this.userToEdit)
+  }
+
+  deleteUser($event: User) {
     this.user = $event
+    this.user.userName = undefined
   }
 }

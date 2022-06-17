@@ -2,7 +2,7 @@ import {SubscriptionPlan} from "./subscription-plan";
 
 export interface User {
   id: number,
-  userName: string,
+  userName: string | undefined,
   userSurname: string,
   email:string,
   cardNumber: string,

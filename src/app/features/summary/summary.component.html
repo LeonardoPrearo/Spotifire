@@ -1,5 +1,5 @@
 <div class="summary-container">
-  <div *ngIf="user else template" class="summary">
+  <div *ngIf="user.userName else template" class="summary">
     <div>
       <h2>Riepilogo</h2>
     </div>
@@ -19,14 +19,20 @@
       </div>
     <div>
       <button (click)="editUser(user)">Modifica</button>
-      <button>Annulla</button>
+      <button (click)="deleteUser(user)">Annulla</button>
       <button routerLink="/home">Conferma</button>
     </div>
   </div>
-  <ng-template #template>
+
+  <ng-template #template [ngIf]="">
     <div class="no-info">
       <img src="https://picsum.photos/200" class="img-template">
       <p>Frase a caso</p>
+    </div>
+  </ng-template>
+  <ng-template #deleted>
+    <div>
+
     </div>
   </ng-template>
 </div>

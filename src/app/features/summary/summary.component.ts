@@ -8,8 +8,9 @@ import {User} from "../../core/model/user";
 })
 export class SummaryComponent implements OnInit {
 
-  @Input() user: User | undefined
+  @Input() user: User
   @Output() userToEdit : EventEmitter<User> = new EventEmitter<User>();
+  @Output() userToDelete : EventEmitter<User> = new EventEmitter<User>();
 
   constructor() { }
 
@@ -18,5 +19,9 @@ export class SummaryComponent implements OnInit {
 
   editUser(user: User) {
     this.userToEdit.emit(user)
+  }
+
+  deleteUser(user: User) {
+    this.userToDelete.emit(user)
   }
 }
