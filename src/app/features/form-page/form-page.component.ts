@@ -31,12 +31,7 @@ export class FormPageComponent implements OnInit {
 
   manageUser(){
 
-    if(!this.user){
-      this.addUser()
-    }
-    else{
-      this.addUser()
-    }
+    this.addUser()
     this.userForm.reset()
   }
 
