@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, SimpleChanges} from '@angular/core';
 import {User} from "../../core/model/user";
-import {FormControl, FormGroup} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-form-page',
@@ -12,13 +12,13 @@ export class FormPageComponent implements OnInit {
   user : User ;
 
   userForm = new FormGroup({
-    userName: new FormControl(''),
-    userSurname: new FormControl(''),
-    cardNumber: new FormControl(''),
-    cardExpiration: new FormControl(''),
-    cvv: new FormControl(''),
-    planType: new FormControl(''),
-    planDuration: new FormControl('')
+    userName: new FormControl('', [Validators.required, Validators.minLength(1)]),
+    userSurname: new FormControl('', Validators.compose([Validators.required, Validators.minLength(1)])),
+    cardNumber: new FormControl('', Validators.compose([Validators.required, Validators.minLength(16), Validators.maxLength(16), Validators.pattern("^[0-9]*$")])),
+    cardExpiration: new FormControl('', Validators.compose([Validators.required, Validators.pattern("^[0-9]*$")])),
+    cvv: new FormControl('', Validators.compose([Validators.required , Validators.pattern("^[0-9]*$"), Validators.minLength(3), Validators.maxLength(3)])),
+    planType: new FormControl('', Validators.compose([Validators.required])),
+    planDuration: new FormControl('', Validators.compose([Validators.required]))
   })
 
   userToEdit : User;
@@ -28,26 +28,32 @@ export class FormPageComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['user'].currentValue) {
+
+    }
+  }
 
   manageUser(){
-    if(!this.userToEdit){
+    const newUser = this.userForm
+    if(!this.user){
       this.addUser()
     }
     else{
-      this.editUser(this.userToEdit)
-      this.userForm.reset()
+      this.editUser(this.user)
+
     }
+    this.userForm.reset()
   }
 
   addUser() {
     this.user = this.userForm.value
-    this.userForm.reset()
   }
 
 
   editUser($event: User) {
-    this.userToEdit = $event
-    this.userForm.patchValue(this.userToEdit)
-    this.user = {...this.userToEdit}
+    this.user = $event
+    this.userForm?.patchValue(this.user);
+    this.user = this.userForm.value
   }
 }

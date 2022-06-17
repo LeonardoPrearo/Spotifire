@@ -8,12 +8,21 @@
         </div>
         <div class="row clearfix">
           <div class="">
-            <form [formGroup]="userForm" (ngSubmit)="manageUser()">
-              <div class="input_field"> <span><i aria-hidden="true" class="fa fa-user"></i></span>
+            <form [formGroup]="userForm" (ngSubmit)="manageUser()" >
+              <div *ngIf="userForm.controls['userName'].invalid && userForm.controls['userName'].touched" class="">
+              Campo obbligatorio
+              </div>
+              <div class="input_field" > <span><i aria-hidden="true" class="fa fa-user"></i></span>
                 <input type="text" name="userName" id="userName" placeholder="Nome" formControlName="userName" required />
               </div>
+              <div *ngIf="userForm.controls['userSurname'].invalid && userForm.controls['userSurname'].touched" class="">
+              Campo obbligatorio
+            </div>
               <div class="input_field"> <span><i aria-hidden="true" class="fa fa-user"></i></span>
                 <input type="text" name="userSurname" id="userSurname" placeholder="Cognome" formControlName="userSurname" required />
+              </div>
+              <div *ngIf="userForm.controls['cardNumber'].invalid && userForm.controls['cardNumber'].touched" class="">
+                Numero carta non valido
               </div>
               <div class="input_field"> <span><i aria-hidden="true" class="fa fa-credit-card"></i></span>
                 <input type="text" name="cardNumber" id="cardNumber" placeholder="Numero carta" formControlName="cardNumber" required />
@@ -21,16 +30,25 @@
               <div class="row clearfix">
                 <div class="col_half">
                   <div class="input_field">
+                    <div *ngIf="userForm.controls['cardExpiration'].invalid && userForm.controls['cardExpiration'].touched" class="">
+                      Campo obbligatorio
+                    </div>
                     <input type="text" name="cardExpiration" id="cardExpiration" placeholder="Scadenza carta" formControlName="cardExpiration"/>
                   </div>
                 </div>
                 <div class="col_half">
                   <div class="input_field">
+                    <div *ngIf="userForm.controls['cvv'].invalid && userForm.controls['cvv'].touched" class="">
+                      Campo obbligatorio
+                    </div>
                     <input type="text" name="cvv" id="cvv" placeholder="CVV" required formControlName="cvv"/>
                   </div>
                 </div>
               </div>
               <div class="input_field select_option">
+                <div *ngIf="userForm.controls['planType'].invalid && userForm.controls['planType'].touched" class="">
+                  Campo obbligatorio
+                </div>
                 <label>Scegli abbonamento</label>
                 <select name="planType" id="planType" formControlName="planType">
                   <option>Basic</option>
@@ -38,7 +56,11 @@
                   <option>Family</option>
                   <option>Martina</option>
                 </select>
+                <div *ngIf="userForm.controls['planDuration'].invalid && userForm.controls['planDuration'].touched" class="">
+                Campo obbligatorio
+              </div>
                 <label class="duration-select">Scegli durata</label>
+
                 <select class="duration-select" name="planDuration" id="planDuration" formControlName="planDuration">
                   <option>1 mese</option>
                   <option>3 mesi</option>
@@ -46,7 +68,7 @@
                   <option>12 mesi</option>
                 </select>
               </div>
-              <input class="button" type="submit" value="Conferma Informazioni"/>
+              <input class="button" type="submit" value="Conferma Informazioni" [disabled]="userForm.invalid"/>
             </form>
           </div>
         </div>
@@ -54,6 +76,5 @@
     </div>
 
     <app-summary [user]="user" (userToEdit)="editUser($event)"></app-summary>
-    <p style="color:white">{{this.userToEdit | json}}</p>
   </div>
 </div>

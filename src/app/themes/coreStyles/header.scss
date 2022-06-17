@@ -1,20 +1,27 @@
 .navbarLista{
   display: grid;
   grid-template-columns: 10% 90%;
+  background-color: #333333;
+  height: 6rem;
   .logo{
-
     height: 4rem;
     width: 4rem;
-    .editLogo{
-      position: relative;
-      left: 1rem;
-      filter: invert(84%) sepia(27%) saturate(5750%) hue-rotate(285deg) brightness(81%) contrast(83%);
-    }
-    p{
-      position: relative;
-      left: 0.5rem;
-      color: white;
-      font-size: 1.3rem;
+    a {
+      text-decoration: none;
+      .editLogo {
+        position: relative;
+        left: 1rem;
+        filter: invert(84%) sepia(27%) saturate(5750%) hue-rotate(285deg) brightness(81%) contrast(83%);
+      }
+
+      p {
+        position: relative;
+        left: 0.5rem;
+        color: white;
+        font-size: 1.3rem;
+        font-weight: 800;
+        text-shadow: 2px 2px 2px #c16a9f;
+      }
     }
   }
   .lista{
@@ -23,7 +30,7 @@
       justify-content: space-around;
       li{
         position: relative;
-        top: 1.5rem;
+        top: 1.9rem;
         a{
           color: white;
           text-decoration: none;
@@ -37,3 +44,19 @@
 
 }
 
+@keyframes animation {
+  0%{
+    transform: rotate(0deg);
+  }
+  50%{
+    transform: rotate(10deg);
+  }
+  100%{
+    transform: rotate(20deg);
+  }
+}
+
+.logo:hover{
+  animation-name: animation;
+  animation-duration: 3s;
+}

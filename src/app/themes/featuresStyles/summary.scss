@@ -1,4 +1,11 @@
 .summary-container{
+  .summary{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    top: 13rem;
+  }
   .no-info{
     position: relative;
     top: 13rem;
